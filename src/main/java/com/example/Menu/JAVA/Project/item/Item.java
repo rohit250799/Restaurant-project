@@ -1,12 +1,23 @@
 package com.example.Menu.JAVA.Project.item;
 
 import org.springframework.data.annotation.Id;
+import org.hibernate.validator.constraints.URL;
+import org.springframework.data.annotation.Id;
+import javax.validation.constraints.*;
 
 public class Item {
     private final Long id;
+    @NotNull(message = "Name should not be null")
+    @Pattern(regexp = "^[a-zA-Z ]+$", message = "name should be a String")
     private final String name;
+    @NotNull(message = "price is required")
+    @Positive(message = "price should be a positive number")
     private final Long price;
+    @NotNull(message = "Description is required")
+    @Pattern(regexp = "[a-zA-Z] + $", message = "description should be a String")
     private final String description;
+    @NotNull(message = "Image is required")
+    @URL(message = "Image must be a URL")
     private final String image;
 
     public Item(
