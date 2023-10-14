@@ -14,7 +14,7 @@ public class Item {
     @Positive(message = "price should be a positive number")
     private final Long price;
     @NotNull(message = "Description is required")
-    @Pattern(regexp = "[a-zA-Z] + $", message = "description should be a String")
+    @Pattern(regexp="^[a-zA-Z ]+$", message = "description must be a string")
     private final String description;
     @NotNull(message = "Image is required")
     @URL(message = "Image must be a URL")
@@ -45,7 +45,7 @@ public class Item {
     call updateWith with a new item that has a different name, price, description,
     and image, it will create a new item with the same ID (123) but with the updated
     details. The original item remains unchanged. */
-    public Item updateWith(Item item){ //
+    public Item updateWith(Item item){
         return new Item(
                 this.id,  //statement responsible to keep id the same
                 item.name,
